@@ -2,16 +2,18 @@
 umask 022
 # Builds <pkg>_<version>_<arch>.deb for amd64 and arm64 (or one arch). The package installs a systemd service that
 # runs the published, version-pinned container images with Docker Compose; it does not bundle the app itself.
-# Usage: packaging/deb/build.sh <version> [amd64|arm64]     Output: dist/ (override with OUT_DIR)
+# Usage: IMAGE_TAG=<tag> packaging/deb/build.sh <version> [amd64|arm64]
+# Output: dist/ (override with OUT_DIR). IMAGE_TAG defaults to <version>.
 set -euo pipefail
 here=$(cd "$(dirname "$0")" && pwd); root=$(cd "$here/../.." && pwd)
 . "$here/product.conf"
 ver="${1:?version, e.g. 1.2.3}"; ver="${ver#v}"
+img_tag="${IMAGE_TAG:-$ver}"; img_tag="${img_tag#v}"
 archs="${2:-amd64 arm64}"; out="${OUT_DIR:-$root/dist}"; mkdir -p "$out"
 for arch in $archs; do
   stage=$(mktemp -d); pkg="$stage/p"
   mkdir -p "$pkg/DEBIAN" "$pkg/usr/lib/$PKG" "$pkg/usr/share/$PKG" "$pkg/lib/systemd/system" "$pkg/usr/share/doc/$PKG"
-  sed "s/@VERSION@/$ver/g" "$here/docker-compose.yml" > "$pkg/usr/lib/$PKG/docker-compose.yml"
+  sed "s/@VERSION@/$img_tag/g" "$here/docker-compose.yml" > "$pkg/usr/lib/$PKG/docker-compose.yml"
   # Shipped as an example; postinst creates /etc/$PKG/$PKG.env from it once, so the settings and generated secrets
   # (which match the data volumes) survive remove, purge and upgrades.
   sed "s/@VERSION@/$ver/g" "$here/$PKG.env" > "$pkg/usr/share/$PKG/$PKG.env.example"

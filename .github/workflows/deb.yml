@@ -37,14 +37,17 @@ jobs:
       - name: Build both architectures
         run: |
           VERSION="${{ github.event.inputs.version }}"; VERSION="${VERSION#v}"
+          IMAGE_TAG="$VERSION"
           if [ -z "$VERSION" ]; then
-            # Default to the latest released tag so the test job pulls images
-            # that actually exist on GHCR (an unpublished version such as 1.10.0
-            # would fail with "denied" in test.sh).
+            # Keep a valid Debian package version from the latest tag, but
+            # point containers to :edge for push/PR/test-only runs because the
+            # Docker publish workflow only guarantees :edge on branch pushes.
             VERSION="$(git describe --tags --abbrev=0 2>/dev/null || true)"; VERSION="${VERSION#v}"
+            [ -n "$VERSION" ] || VERSION="1.9.0"
+            IMAGE_TAG="edge"
           fi
-          [ -n "$VERSION" ] || VERSION="1.9.0"
-          packaging/deb/build.sh "$VERSION"
+          IMAGE_TAG="${IMAGE_TAG#v}"
+          IMAGE_TAG="$IMAGE_TAG" packaging/deb/build.sh "$VERSION"
           for f in dist/*.deb; do dpkg-deb -I "$f" | head -12; done
       - name: Scripts parse
         run: for f in packaging/deb/postinst packaging/deb/prerm packaging/deb/postrm packaging/deb/build.sh packaging/deb/test.sh; do bash -n "$f"; done
@@ -70,14 +73,15 @@ jobs:
       - name: Verify container images are published
         run: |
           set -eu
-          deb="$(ls dist/*_${{ matrix.arch }}.deb)"
-          ver="$(basename "$deb" | sed -E 's/^nodedr-orderrestro_([0-9.]+)_.*\.deb$/\1/')"
+          tag="${{ github.event.inputs.version }}"
+          tag="${tag#v}"
+          [ -n "$tag" ] || tag="edge"
           for img in backend web; do
-            if ! docker manifest inspect "ghcr.io/sandipan2005/zest-restaurant-pos-$img:$ver" >/dev/null 2>&1; then
-              echo "ERROR: image ghcr.io/sandipan2005/zest-restaurant-pos-$img:$ver is not published (or not public). Run the 'Publish Docker images' workflow for version $ver first." >&2
+            if ! docker manifest inspect "ghcr.io/sandipan2005/zest-restaurant-pos-$img:$tag" >/dev/null 2>&1; then
+              echo "ERROR: image ghcr.io/sandipan2005/zest-restaurant-pos-$img:$tag is not published (or not public). Run the 'Publish Docker images' workflow for tag $tag first." >&2
               exit 1
             fi
-            echo "OK: $img:$ver"
+            echo "OK: $img:$tag"
           done
       - name: Install, answer, reinstall, remove, purge
         run: sudo DEB="$PWD/$(ls dist/*_${{ matrix.arch }}.deb)" packaging/deb/test.sh
