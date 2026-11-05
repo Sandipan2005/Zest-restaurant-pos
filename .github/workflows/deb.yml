@@ -30,10 +30,20 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
+        with:
+          # Tags are needed to derive a released version that actually has
+          # published container images on GHCR when no version is supplied.
+          fetch-depth: 0
       - name: Build both architectures
         run: |
           VERSION="${{ github.event.inputs.version }}"; VERSION="${VERSION#v}"
-          [ -n "$VERSION" ] || VERSION="1.10.0"
+          if [ -z "$VERSION" ]; then
+            # Default to the latest released tag so the test job pulls images
+            # that actually exist on GHCR (an unpublished version such as 1.10.0
+            # would fail with "denied" in test.sh).
+            VERSION="$(git describe --tags --abbrev=0 2>/dev/null || true)"; VERSION="${VERSION#v}"
+          fi
+          [ -n "$VERSION" ] || VERSION="1.9.0"
           packaging/deb/build.sh "$VERSION"
           for f in dist/*.deb; do dpkg-deb -I "$f" | head -12; done
       - name: Scripts parse
@@ -57,6 +67,18 @@ jobs:
         with: { name: debs, path: dist }
       - name: Verify checksum
         run: cd dist && sha256sum -c ./*_${{ matrix.arch }}.deb.sha256
+      - name: Verify container images are published
+        run: |
+          set -eu
+          deb="$(ls dist/*_${{ matrix.arch }}.deb)"
+          ver="$(basename "$deb" | sed -E 's/^nodedr-orderrestro_([0-9.]+)_.*\.deb$/\1/')"
+          for img in backend web; do
+            if ! docker manifest inspect "ghcr.io/sandipan2005/zest-restaurant-pos-$img:$ver" >/dev/null 2>&1; then
+              echo "ERROR: image ghcr.io/sandipan2005/zest-restaurant-pos-$img:$ver is not published (or not public). Run the 'Publish Docker images' workflow for version $ver first." >&2
+              exit 1
+            fi
+            echo "OK: $img:$ver"
+          done
       - name: Install, answer, reinstall, remove, purge
         run: sudo DEB="$PWD/$(ls dist/*_${{ matrix.arch }}.deb)" packaging/deb/test.sh
 

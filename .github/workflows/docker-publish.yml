@@ -177,3 +177,15 @@ jobs:
           IMAGE: ${{ env.REGISTRY }}/${{ needs.version.outputs.owner }}/${{ matrix.image }}
           VERSION: ${{ needs.version.outputs.version }}
         run: docker buildx imagetools inspect "$IMAGE:$VERSION"
+      - name: Make package public
+        # GHCR packages created via GITHUB_TOKEN default to private, which
+        # makes `docker pull` fail with "denied" for end users and for the deb
+        # test job (which pulls anonymously). Force public visibility so
+        # version-pinned images are actually installable.
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: ${{ needs.version.outputs.owner }}
+          IMAGE: ${{ matrix.image }}
+        run: |
+          gh api --method PATCH "/users/$OWNER/packages/container/$IMAGE" -f visibility=public || \
+          gh api --method PATCH "/orgs/$OWNER/packages/container/$IMAGE" -f visibility=public || true
