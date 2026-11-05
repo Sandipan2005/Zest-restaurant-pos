@@ -1,5 +1,5 @@
 // Zest Restaurant POS updater — a tiny sidecar that moves the app's containers to a
-// specific published version. Needed because a container can't replace itself,
+// specific published version, or automatically follows a configured Zest tag.
 // and because CasaOS pins every image to an exact version (no :latest), so
 // "pull the same tag again" (Watchtower) would never find anything new.
 //
@@ -20,8 +20,12 @@ const TOKEN = process.env.UPDATER_TOKEN || '';
 const TARGETS = (process.env.TARGET_CONTAINERS || 'nodedr-restaurant-backend,nodedr-restaurant-web').split(',').map((s) => s.trim()).filter(Boolean);
 const PORT = Number(process.env.PORT || 8080);
 const VERSION_RE = /^\d+\.\d+\.\d+$/;
+const AUTO_UPDATE = /^(1|true|yes)$/i.test(process.env.AUTO_UPDATE || '');
+const AUTO_UPDATE_TAG = process.env.AUTO_UPDATE_TAG || 'edge';
+const AUTO_UPDATE_INTERVAL_MS = Math.max(60_000, Number(process.env.AUTO_UPDATE_INTERVAL_MS || 300_000));
 
 const status = { state: 'idle', version: null, error: null, step: null };
+let updateRunning = false;
 
 function docker(method, path, body) {
   return new Promise((resolve, reject) => {
@@ -108,29 +112,67 @@ async function replace(name, newImage) {
 }
 
 async function run(version) {
+  if (updateRunning) return false;
+  updateRunning = true;
   Object.assign(status, { state: 'pulling', version, error: null, step: 'pulling images' });
   try {
     const plan = [];
     for (const name of TARGETS) {
       const info = await json('GET', `/containers/${enc(name)}/json`);
       const { repo, tag } = splitImage(info.Config.Image);
-      plan.push({ name, repo, from: tag, to: version });
+      plan.push({ name, repo, from: tag, fromId: info.Image, to: version });
     }
-    for (const p of plan) await pull(p.repo, p.to);
+    for (const p of plan) {
+      await pull(p.repo, p.to);
+      const pulled = await json('GET', `/images/${enc(`${p.repo}:${p.to}`)}/json`);
+      p.toId = pulled.Id;
+    }
     status.state = 'restarting';
     const done = [];
     for (const p of plan) {
-      if (p.from === p.to) continue;
+      if (p.fromId === p.toId) continue;
       status.step = `restarting ${p.name}`;
       await replace(p.name, `${p.repo}:${p.to}`);
       done.push(p);
     }
     Object.assign(status, { state: 'done', step: null });
     // Best-effort cleanup of the superseded images so disks don't fill up.
-    for (const p of done) await docker('DELETE', `/images/${enc(`${p.repo}:${p.from}`)}`).catch(() => {});
+    for (const p of done) {
+      if (p.from !== p.to) {
+        await docker('DELETE', `/images/${enc(`${p.repo}:${p.from}`)}`).catch(() => {});
+      }
+    }
   } catch (err) {
     console.error('update failed:', err.message);
     Object.assign(status, { state: 'error', error: err.message, step: null });
+  } finally {
+    updateRunning = false;
+  }
+  return true;
+}
+
+async function checkAutomatically() {
+  if (updateRunning) return;
+  try {
+    const containers = await Promise.all(
+      TARGETS.map((name) => json('GET', `/containers/${enc(name)}/json`)),
+    );
+    const images = containers.map((info) => splitImage(info.Config.Image));
+    if (images.some(({ repo }) => !repo.startsWith('ghcr.io/sandipan2005/zest-restaurant-pos-'))) {
+      throw new Error('automatic updates require Zest-owned GHCR images');
+    }
+    const currentIds = containers.map((info) => info.Image);
+    const pulledIds = [];
+    for (const { repo } of images) {
+      await pull(repo, AUTO_UPDATE_TAG);
+      const image = await json('GET', `/images/${enc(`${repo}:${AUTO_UPDATE_TAG}`)}/json`);
+      pulledIds.push(image.Id);
+    }
+    if (pulledIds.some((id, index) => id !== currentIds[index])) {
+      await run(AUTO_UPDATE_TAG);
+    }
+  } catch (err) {
+    console.error('automatic update check failed:', err.message);
   }
 }
 
@@ -159,5 +201,14 @@ const server = http.createServer((req, res) => {
   send(404, { error: 'not found' });
 });
 
-if (require.main === module) server.listen(PORT, () => console.log(`updater listening on :${PORT}, managing ${TARGETS.join(', ')}`));
+if (require.main === module) {
+  server.listen(PORT, () => {
+    console.log(`updater listening on :${PORT}, managing ${TARGETS.join(', ')}`);
+    if (AUTO_UPDATE) {
+      setTimeout(checkAutomatically, 30_000);
+      setInterval(checkAutomatically, AUTO_UPDATE_INTERVAL_MS);
+      console.log(`automatic updates enabled: ${AUTO_UPDATE_TAG} every ${AUTO_UPDATE_INTERVAL_MS}ms`);
+    }
+  });
+}
 module.exports = { splitImage, createBody };

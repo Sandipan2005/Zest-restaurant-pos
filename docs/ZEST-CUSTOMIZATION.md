@@ -24,3 +24,22 @@ customizations or introduce an untested workflow change.
 The source repository does not run this job against itself. After forking,
 the workflow's default `UPSTREAM_REPOSITORY` value points back to the official
 project. Change that value only if you use a different upstream repository.
+
+## Automatic running updates
+
+The root Docker Compose deployment follows the Zest-owned `edge` images
+automatically. The updater checks every five minutes and replaces the backend
+and web containers only when the image digest changes. PostgreSQL data and
+uploads remain in Docker volumes.
+
+GitHub Actions publishes those images after changes reach `master`. The first
+run requires GitHub Actions package publishing to succeed. Keep
+`AUTO_UPDATE=true` in `.env` to enable this behavior, or set it to `false` to
+update manually with:
+
+```powershell
+docker compose up -d --build
+```
+
+Never point the updater at `ghcr.io/raktim94/nodedr-restaurant-pos-*`; those
+are upstream images and will restore the original branding.

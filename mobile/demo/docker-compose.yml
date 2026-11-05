@@ -18,7 +18,7 @@ services:
     networks: [demo]
 
   backend:
-    image: ghcr.io/raktim94/nodedr-restaurant-pos-backend:${APP_VERSION:?set in .env}
+    image: ghcr.io/sandipan2005/zest-restaurant-pos-backend:${APP_VERSION:?set in .env}
     restart: unless-stopped
     environment:
       DATABASE_URL: "postgresql://demo:${DEMO_DB_PASSWORD}@db:5432/demo"
@@ -34,7 +34,7 @@ services:
     networks: [demo]
 
   web:
-    image: ghcr.io/raktim94/nodedr-restaurant-pos-web:${APP_VERSION}
+    image: ghcr.io/sandipan2005/zest-restaurant-pos-web:${APP_VERSION}
     restart: unless-stopped
     ports: ["127.0.0.1:19951:3000"]
     depends_on: [backend]
