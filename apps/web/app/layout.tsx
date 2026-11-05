@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "OrderRestro",
+  title: "Zest",
   description: "Offline-first restaurant management system",
   manifest: "/manifest.json",
   icons: {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#6D4AFF",
+  themeColor: "#E9692C",
   // Lets the bottom nav / sheets sit inside the notch + home-indicator safe areas.
   viewportFit: "cover",
 };

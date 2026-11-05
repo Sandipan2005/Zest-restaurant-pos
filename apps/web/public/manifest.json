@@ -1,14 +1,14 @@
 {
-  "name": "OrderRestro",
-  "short_name": "OrderRestro",
+  "name": "Zest",
+  "short_name": "Zest",
   "description": "Offline-first restaurant management system — POS, tables, kitchen display, menu, inventory.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone"],
   "orientation": "any",
-  "background_color": "#0f0f11",
-  "theme_color": "#6D4AFF",
+  "background_color": "#FFFDF8",
+  "theme_color": "#E9692C",
   "lang": "en",
   "categories": ["business", "food", "productivity"],
   "icons": [

@@ -53,82 +53,83 @@
 }
 
 :root {
-  /* Product Design System v1.0 (see ~/.claude/skills/product-design-system and
-     DESIGN_SYSTEM.md). Warm-neutral surfaces, one violet action colour. */
-  --background: #F7F7F5;
-  --foreground: #18181B;
+  /* Zest Restaurant - Warm Solar/Citrus Palette */
+  /* Golden-yellow, amber, saffron, terracotta with charcoal & warm wood tones */
+  --background: #FFFDF8;
+  --foreground: #2D2D2D;
   --card: #FFFFFF;
-  --card-foreground: #18181B;
+  --card-foreground: #2D2D2D;
   --popover: #FFFFFF;
-  --popover-foreground: #18181B;
-  --primary: #6D4AFF;
-  --primary-hover: #5B3BE8;
+  --popover-foreground: #2D2D2D;
+  --primary: #E9692C;        /* Deep saffron - main action color */
+  --primary-hover: #D45A1F;  /* Darker saffron for hover */
   --primary-foreground: #FFFFFF;
-  --secondary: #F1F1EF;
-  --secondary-foreground: #18181B;
-  --muted: #F1F1EF;
-  --muted-foreground: #52525B;
-  --accent: #F0EBFF;
-  --accent-foreground: #4C2EC7;
+  --secondary: #FFF8F0;      /* Warm cream */
+  --secondary-foreground: #2D2D2D;
+  --muted: #FFF3E6;          /* Light amber */
+  --muted-foreground: #8B6914; /* Warm wood tone */
+  --accent: #FFF0E0;         /* Pale saffron */
+  --accent-foreground: #E9692C;
   --destructive: #C43D4D;
   --success: #18845B;
-  --warning: #A65C00;
+  --warning: #E9692C;
   --info: #2863B8;
-  --border: #E4E4E7;
-  --input: #D4D4D8;
-  --ring: #3C82F6;
-  --chart-1: #6D4AFF;
-  --chart-2: #18845B;
-  --chart-3: #A65C00;
-  --chart-4: #2863B8;
-  --chart-5: #71717A;
+  --border: #F5E6D3;         /* Warm sand border */
+  --input: #E8D5C4;          /* Light terracotta input */
+  --ring: #E9692C;           /* Saffron focus ring */
+  --chart-1: #E9692C;        /* Saffron */
+  --chart-2: #F5A623;        /* Golden yellow */
+  --chart-3: #FF8C00;        /* Amber */
+  --chart-4: #E2725B;        /* Terracotta */
+  --chart-5: #8B6914;        /* Warm wood */
   --radius: 0.75rem;
-  --sidebar: #FFFFFF;
-  --sidebar-foreground: #18181B;
-  --sidebar-primary: #6D4AFF;
+  --sidebar: #FFFDF8;
+  --sidebar-foreground: #2D2D2D;
+  --sidebar-primary: #E9692C;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F0EBFF;
-  --sidebar-accent-foreground: #4C2EC7;
-  --sidebar-border: #E4E4E7;
-  --sidebar-ring: #3C82F6;
+  --sidebar-accent: #FFF0E0;
+  --sidebar-accent-foreground: #E9692C;
+  --sidebar-border: #F5E6D3;
+  --sidebar-ring: #E9692C;
 }
 
 .dark {
-  --background: #111114;
-  --foreground: #F4F4F5;
-  --card: #19191E;
-  --card-foreground: #F4F4F5;
-  --popover: #19191E;
-  --popover-foreground: #F4F4F5;
-  --primary: #A18AFF;
-  --primary-hover: #B5A5FF;
-  --primary-foreground: #17102E;
-  --secondary: #222228;
-  --secondary-foreground: #F4F4F5;
-  --muted: #222228;
-  --muted-foreground: #A1A1AA;
-  --accent: #30284B;
-  --accent-foreground: #D6CBFF;
+  /* Zest Restaurant Dark Mode - Warm Solar/Citrus Palette */
+  --background: #1A1612;       /* Deep charcoal with warmth */
+  --foreground: #FFFDF8;       /* Warm white */
+  --card: #231E18;             /* Dark warm wood */
+  --card-foreground: #FFFDF8;
+  --popover: #231E18;
+  --popover-foreground: #FFFDF8;
+  --primary: #F5A623;          /* Golden yellow - brighter for dark bg */
+  --primary-hover: #FFB84D;    /* Lighter gold for hover */
+  --primary-foreground: #1A1612;
+  --secondary: #2D261E;        /* Dark warm wood */
+  --secondary-foreground: #FFFDF8;
+  --muted: #2D261E;
+  --muted-foreground: #D4B896; /* Warm sand */
+  --accent: #3D3226;           /* Dark terracotta */
+  --accent-foreground: #F5A623;
   --destructive: #FF7A88;
   --success: #5BC69A;
-  --warning: #F2BA62;
+  --warning: #F5A623;
   --info: #80B4FF;
-  --border: #34343C;
-  --input: #45454F;
-  --ring: #80B4FF;
-  --chart-1: #A18AFF;
-  --chart-2: #5BC69A;
-  --chart-3: #F2BA62;
-  --chart-4: #80B4FF;
-  --chart-5: #A1A1AA;
-  --sidebar: #19191E;
-  --sidebar-foreground: #F4F4F5;
-  --sidebar-primary: #A18AFF;
-  --sidebar-primary-foreground: #17102E;
-  --sidebar-accent: #30284B;
-  --sidebar-accent-foreground: #D6CBFF;
-  --sidebar-border: #34343C;
-  --sidebar-ring: #80B4FF;
+  --border: #3D3226;
+  --input: #4A3E2E;
+  --ring: #F5A623;
+  --chart-1: #F5A623;
+  --chart-2: #FF8C00;
+  --chart-3: #E9692C;
+  --chart-4: #E2725B;
+  --chart-5: #D4B896;
+  --sidebar: #1A1612;
+  --sidebar-foreground: #FFFDF8;
+  --sidebar-primary: #F5A623;
+  --sidebar-primary-foreground: #1A1612;
+  --sidebar-accent: #3D3226;
+  --sidebar-accent-foreground: #F5A623;
+  --sidebar-border: #3D3226;
+  --sidebar-ring: #F5A623;
 }
 
 /* Customer kiosk (/kiosk/*): always the light palette, whatever the device's
@@ -137,31 +138,31 @@
    utilities are unaffected. */
 .kiosk-root {
   color-scheme: light;
-  --background: #F7F7F5;
-  --foreground: #18181B;
+  --background: #FFFDF8;
+  --foreground: #2D2D2D;
   --card: #FFFFFF;
-  --card-foreground: #18181B;
+  --card-foreground: #2D2D2D;
   --popover: #FFFFFF;
-  --popover-foreground: #18181B;
-  --primary: #6D4AFF;
+  --popover-foreground: #2D2D2D;
+  --primary: #E9692C;
   --primary-foreground: #FFFFFF;
-  --secondary: #F1F1EF;
-  --secondary-foreground: #18181B;
-  --muted: #F1F1EF;
-  --muted-foreground: #52525B;
-  --accent: #F0EBFF;
-  --accent-foreground: #4C2EC7;
+  --secondary: #FFF8F0;
+  --secondary-foreground: #2D2D2D;
+  --muted: #FFF3E6;
+  --muted-foreground: #8B6914;
+  --accent: #FFF0E0;
+  --accent-foreground: #E9692C;
   --destructive: #C43D4D;
   --success: #18845B;
-  --warning: #A65C00;
-  --border: #D4D4D8;
-  --input: #A1A1AA;
-  --ring: #3C82F6;
+  --warning: #E9692C;
+  --border: #F5E6D3;
+  --input: #E8D5C4;
+  --ring: #E9692C;
   /* Explicit system fallbacks so the kiosk never renders in a serif face if the
      bundled web font is unavailable (offline start-up, blocked fonts CDN). */
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
-  --primary-hover: #5B3BE8;
+  --primary-hover: #D45A1F;
   --info: #2863B8;
 }
 
