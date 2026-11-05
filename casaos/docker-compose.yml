@@ -101,10 +101,10 @@ services:
       ports:
         - container: "3000"
           description:
-            en_US: Nodedr OrderRestro web interface
+            en_US: Zest Restaurant POS web interface
           protocol: tcp
 
-  # In-app "Update now" (Settings > Updates): pulls the newer OrderRestro
+  # In-app "Update now" (Settings > Updates): pulls the newer Zest
   # images above and recreates those two containers (nothing else). Needs the
   # Docker socket to do that; data in /DATA/AppData is untouched. The updater
   # image is generic (it only manages the containers named below), so the
@@ -125,7 +125,7 @@ services:
       volumes:
         - container: /var/run/docker.sock
           description:
-            en_US: Docker socket, used only by the in-app "Update now" button to move the two OrderRestro containers to a newer version.
+            en_US: Docker socket, used only by the in-app "Update now" button to move the two Zest containers to a newer version.
 
 networks:
   nodedr-restaurant-pos:
@@ -147,12 +147,12 @@ x-casaos:
     - https://cdn.jsdelivr.net/gh/Raktim94/nodedr-restaurant-pos@master/casaos/screenshot-2.png
     - https://cdn.jsdelivr.net/gh/Raktim94/nodedr-restaurant-pos@master/casaos/screenshot-3.png
   title:
-    en_US: Nodedr OrderRestro
+    en_US: Zest Restaurant POS
   tagline:
     en_US: Offline-first restaurant management — POS, kitchen display, tables, and reservations
   description:
     en_US: |
-      Nodedr OrderRestro is a free, open-source restaurant management system:
+      Zest Restaurant POS is a free, open-source restaurant management system:
       point-of-sale ordering, a live kitchen display (KDS) split by station,
       table/floor management with QR-code table ordering, reservations and a
       waitlist, inventory with automatic ingredient deduction, customer CRM
@@ -211,13 +211,13 @@ x-casaos:
       sends them to the server when it is back. Switching tabs no longer shows "Can't reach
       the server".
 
-      1.17.0: print from the phone. In the OrderRestro app, bills and kitchen tickets can
+      1.17.0: print from the phone. In the Zest app, bills and kitchen tickets can
       go to a Bluetooth thermal printer, or to Android's print dialog to save a PDF or use
       any printer on the phone. A bill that is not paid yet now prints a UPI "scan to pay"
       QR with the amount due when a UPI id is set in Settings. The pay button stays in view
       on phones and Kitchen Display buttons fit small screens.
 
-      1.15.1: the app is simply called OrderRestro everywhere (sign-in page, install name,
+      1.15.1: the app is simply called Zest everywhere (sign-in page, install name,
       page titles).
 
       1.15.0: Android and iPhone app. Staff and riders connect by typing the server
@@ -266,7 +266,7 @@ x-casaos:
       ingredients, an integrations hub, and error messages shown app-wide.
       Database changes are applied automatically on update.
 
-      1.10.0: connect your own website to OrderRestro. The Integration API now
+      1.10.0: connect your own website to Zest. The Integration API now
       returns the customer's mobile number and delivery address to the website's
       backend (new "View order customer & delivery details" key permission), places
       delivery orders with address and email, retries safely (Idempotency-Key), and

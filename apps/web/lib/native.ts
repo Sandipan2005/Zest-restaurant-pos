@@ -1,4 +1,4 @@
-// Helpers for when the web app runs inside the OrderRestro Android / iOS app
+// Helpers for when the web app runs inside the Zest Android / iOS app
 // (Capacitor). In a normal browser every function here is a quiet no-op, so
 // nothing depends on the app being present. The Capacitor bridge puts the
 // native plugins on window.Capacitor.Plugins, which is why this file needs no

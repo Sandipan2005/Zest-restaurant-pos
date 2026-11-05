@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 // MARK: - Choosing the restaurant server
 
-/// OrderRestro is self-hosted, so the phone remembers which restaurant server it
+/// Zest is self-hosted, so the phone remembers which restaurant server it
 /// talks to. The address is typed or scanned once (on the bundled connect
 /// screen); after that the app opens that server's own web app, with the native
 /// bridge (push, location, haptics) available inside its pages.
@@ -106,7 +106,7 @@ enum ServerStore {
         d.removeObject(forKey: activeKey)
     }
 
-    /// Does an OrderRestro server answer at this address within a moment?
+    /// Does an Zest server answer at this address within a moment?
     static func reachable(_ base: String) -> Bool {
         guard let url = URL(string: base + "/api/v1/auth/setup-status") else { return false }
         var req = URLRequest(url: url)
@@ -254,7 +254,7 @@ public class NativePrinterPlugin: CAPPlugin, CAPBridgedPlugin {
             call.reject("Nothing to print.")
             return
         }
-        let name = call.getString("name") ?? "OrderRestro"
+        let name = call.getString("name") ?? "Zest"
         DispatchQueue.main.async {
             let info = UIPrintInfo(dictionary: nil)
             info.outputType = .general

@@ -443,7 +443,7 @@ export class GatewayPaymentsService {
     const adapter = getAdapter(entry?.adapter);
     if (!conn || !adapter?.refund) {
       throw new BadRequestException(
-        `${adapter?.name ?? 'This gateway'} refunds cannot be sent from OrderRestro. Refund it in the provider dashboard and record it as an Other refund.`,
+        `${adapter?.name ?? 'This gateway'} refunds cannot be sent from Zest. Refund it in the provider dashboard and record it as an Other refund.`,
       );
     }
     const amountMinor = toMinor(input.amount, p.currency);
@@ -568,7 +568,7 @@ export class GatewayPaymentsService {
         data: {
           status: 'NEEDS_REVIEW',
           providerRefundId,
-          note: `Refunded at ${adapter.name} but could not be recorded in OrderRestro: ${(e as Error).message}`.slice(
+          note: `Refunded at ${adapter.name} but could not be recorded in Zest: ${(e as Error).message}`.slice(
             0,
             300,
           ),

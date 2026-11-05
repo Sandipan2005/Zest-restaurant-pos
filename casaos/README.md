@@ -1,7 +1,7 @@
-# Nodedr OrderRestro on CasaOS / ZimaOS
+# Zest Restaurant POS on CasaOS / ZimaOS
 
 This directory holds the app store manifest and assets that let Nodedr
-OrderRestro install as a one-click app on [CasaOS](https://casaos.io) and
+Zest install as a one-click app on [CasaOS](https://casaos.io) and
 [ZimaOS](https://zimaspace.com) (ZimaOS uses the identical `x-casaos`
 compose schema).
 
@@ -95,7 +95,7 @@ manifest, since it's a one-way action against someone else's public repo.
 When you're ready:
 
 1. Fork `IceWhaleTech/CasaOS-AppStore` and add a new
-   `Apps/Nodedr-OrderRestro/` directory containing this directory's
+   `Apps/Nodedr-Zest/` directory containing this directory's
    `docker-compose.yml`, `icon.png`, `thumbnail.png`, and the
    `screenshot-*.png` files.
 2. Update the `icon:`, `thumbnail:`, and `screenshot_link:` URLs in the
@@ -103,7 +103,7 @@ When you're ready:
    of this one, following the same jsdelivr CDN pattern every other app in
    that store uses:
    ```
-   https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nodedr-OrderRestro/icon.png
+   https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nodedr-Zest/icon.png
    ```
 3. Open the PR against `IceWhaleTech/CasaOS-AppStore`. Their own
    `CONTRIBUTING.md` documents the current review checklist — re-check it

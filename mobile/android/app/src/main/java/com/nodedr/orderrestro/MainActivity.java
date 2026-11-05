@@ -94,7 +94,7 @@ public class MainActivity extends BridgeActivity {
                     // Pick the local or online address again, then reopen.
                     runOnUiThread(MainActivity.this::recreate);
                 }
-            }, "OrderRestroNative");
+            }, "ZestNative");
         }
     }
 

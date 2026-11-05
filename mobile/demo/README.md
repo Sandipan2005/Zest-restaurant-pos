@@ -1,6 +1,6 @@
 # Review demo server
 
-A small, throwaway OrderRestro for App Store and Play reviewers: sample data, a manager login, a rider login, reset with `reset.sh`. It holds nothing real.
+A small, throwaway Zest for App Store and Play reviewers: sample data, a manager login, a rider login, reset with `reset.sh`. It holds nothing real.
 
 ## What is here
 

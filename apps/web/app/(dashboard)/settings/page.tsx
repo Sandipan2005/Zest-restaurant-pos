@@ -331,7 +331,7 @@ function GeneralSettingsForm({
                 </button>
               )}
               <p className="text-xs text-muted-foreground">
-                Shows in the app sidebar and login screen instead of the OrderRestro mark.
+                Shows in the app sidebar and login screen instead of the Zest mark.
                 Square, at least 256×256px, PNG with a transparent background works best.
               </p>
             </div>
@@ -693,7 +693,7 @@ function GeneralSettingsForm({
       </Card>
 
       <p className="text-xs text-muted-foreground">
-        Nodedr OrderRestro is free software under the GNU AGPL-3.0. The source code of the version
+        Zest Restaurant POS is free software under the GNU AGPL-3.0. The source code of the version
         you are using is available to every user of this service at{" "}
         <a
           className="underline"

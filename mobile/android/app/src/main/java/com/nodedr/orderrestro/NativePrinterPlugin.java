@@ -156,7 +156,7 @@ public class NativePrinterPlugin extends Plugin {
     @PluginMethod
     public void printHtml(final PluginCall call) {
         final String html = call.getString("html");
-        final String name = call.getString("name", "OrderRestro");
+        final String name = call.getString("name", "Zest");
         if (html == null || html.isEmpty()) {
             call.reject("Nothing to print.");
             return;

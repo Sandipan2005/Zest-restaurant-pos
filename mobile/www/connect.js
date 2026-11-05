@@ -57,7 +57,7 @@
     });
   }
 
-  /** Is this really an OrderRestro server? Uses the native HTTP client, so no CORS. */
+  /** Is this really an Zest server? Uses the native HTTP client, so no CORS. */
   async function check(url) {
     var http = P.CapacitorHttp || (C && C.Plugins && C.Plugins.CapacitorHttp);
     var get = http
@@ -81,7 +81,7 @@
       var l = res[0], o = res[1];
       var reachable = (l && l.ok) || (o && o.ok);
       if (!reachable) {
-        say('bad', "Couldn't reach an OrderRestro server at " + [localUrl, onlineUrl].filter(Boolean).join(' or ') + '. Check the address, and that this phone is on the restaurant WiFi (or the server has an https address).');
+        say('bad', "Couldn't reach an Zest server at " + [localUrl, onlineUrl].filter(Boolean).join(' or ') + '. Check the address, and that this phone is on the restaurant WiFi (or the server has an https address).');
         return;
       }
       var seen = res.filter(function (x) { return x && x.ok; });

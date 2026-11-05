@@ -1,4 +1,4 @@
-# OrderRestro mobile app: Play Store and App Store plan
+# Zest mobile app: Play Store and App Store plan
 
 Status (2026-11-02, version 1.15.0): **built**, see `mobile/README.md`. Android debug and signed release builds run on an emulator; the iOS project is written but not compiled; store submission still needs the owner's accounts, a Firebase project and a public demo server. The sections below are the original plan.
 
@@ -6,7 +6,7 @@ What differs from the plan: the app opens the restaurant's own web app in the na
 
 ## 1. What we are shipping
 
-One app, **OrderRestro**, for Android and iOS. It is the staff and rider app, using the same login as the web app (email or phone plus password).
+One app, **Zest**, for Android and iOS. It is the staff and rider app, using the same login as the web app (email or phone plus password).
 
 | Role | What they get on the phone |
 |---|---|
@@ -73,7 +73,7 @@ Accounts and money
 
 Both stores
 - App name, short and full description, icon, feature graphic (Play), 5 or more screenshots per device size, support URL and email (info@nodedr.com), marketing URL (orderrestro.nodedr.com), privacy policy URL (already on the site, needs a mobile section).
-- **A review login that works.** OrderRestro is self-hosted, so the reviewers need a public demo server with sample data and a staff and a rider account. Without it the app is rejected as "cannot be used". Plan: a small demo instance on `mail` or a VPS, reset nightly.
+- **A review login that works.** Zest is self-hosted, so the reviewers need a public demo server with sample data and a staff and a rider account. Without it the app is rejected as "cannot be used". Plan: a small demo instance on `mail` or a VPS, reset nightly.
 - **Account deletion** inside the app and on a web page (required by both stores).
 - Age rating, content rating, export compliance (the app uses standard HTTPS only).
 

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="apps/web/public/brand-lockup.png" alt="Nodedr OrderRestro" width="520">
+<img src="apps/web/public/logo-zest.svg" alt="Zest Restaurant POS" width="180">
 
 <img src="docs/orderrestro-cover.jpg" alt="Illustrative evening scene in an independent restaurant" width="100%">
 
@@ -23,14 +23,14 @@ dine-in, takeaway, delivery and kitchen operations.
 
 Developed by [NodeDR Infotech Private Limited](https://www.nodedr.com/)
 
-**[Try OrderRestro](https://orderrestro.nodedr.com/)** · **[Case study](https://www.raktimranjit.com/projects/orderrestro)** · **[Maintainer: Raktim Ranjit](https://www.raktimranjit.com/)**
+**[Try Zest](https://orderrestro.nodedr.com/)** · **[Case study](https://www.raktimranjit.com/projects/orderrestro)** · **[Maintainer: Raktim Ranjit](https://www.raktimranjit.com/)**
 
 <p align="center">
-  <a href="https://orderrestro.nodedr.com/"><img src="https://img.shields.io/badge/Go%20to%20the%20OrderRestro%20website-orderrestro.nodedr.com-E0234E?style=for-the-badge" alt="Go to the OrderRestro website"></a>
+  <a href="https://orderrestro.nodedr.com/"><img src="https://img.shields.io/badge/Go%20to%20the%20Zest%20website-orderrestro.nodedr.com-E0234E?style=for-the-badge" alt="Go to the Zest website"></a>
 </p>
 
 <p align="center">
-  <img src="docs/assets/hero-animated.svg" alt="Nodedr OrderRestro: animated overview with an illustrative sample screen" width="100%">
+  <img src="docs/assets/hero-animated.svg" alt="Zest Restaurant POS: animated overview with an illustrative sample screen" width="100%">
 </p>
 
 
@@ -49,7 +49,7 @@ Developed by [NodeDR Infotech Private Limited](https://www.nodedr.com/)
 
 ## What this is
 
-**Nodedr OrderRestro** is a purpose-built, offline-first Restaurant
+**Zest Restaurant POS** is a purpose-built, offline-first Restaurant
 Management System for restaurants, cafés, coffee shops, bakeries, fast
 food, fine dining, bars, food courts, cloud kitchens, and multi-branch
 chains. The whole stack — Postgres, API, and web app — runs on one local
@@ -183,7 +183,7 @@ roles) under **Settings** in the sidebar, photo upload on menu items, and
 an English/Spanish/French language switcher on the guest-facing QR
 ordering page and staff sidebar.
 
-## Why OrderRestro
+## Why Zest
 
 - **UPI-first checkout (India)** — pick UPI and a QR for the exact bill
   amount appears at the till *and* on the customer-facing screen; a
@@ -198,7 +198,7 @@ ordering page and staff sidebar.
 - **India-ready** — GST (inclusive or exclusive), UPI, ₹ formatting, plus
   US sales tax, EU VAT and Spanish IVA for other markets.
 
-## How to use OrderRestro
+## How to use Zest
 
 Start with the [screenshot-guided tutorial](./TUTORIAL.md) for the full
 first-run walkthrough. It covers sign-up, setup, daily service, and the
@@ -251,7 +251,7 @@ management tools with **56 screenshots of the app**.
 ## FAQ
 
 **Is there a free, open-source restaurant POS I can self-host?**
-Yes — OrderRestro is AGPL-3.0 and installs with `docker compose up`, or as
+Yes — Zest is AGPL-3.0 and installs with `docker compose up`, or as
 a one-click app on CasaOS / ZimaOS.
 
 **Does it support UPI payments and GST billing?**
@@ -272,7 +272,7 @@ Yes — every report exports to Excel, PDF or CSV, and can be emailed on a
 daily, weekly or monthly schedule through your own SMTP server.
 
 **What is not built yet?** Gateways beyond Razorpay, Stripe and Cashfree
-(and refunds from inside OrderRestro), direct
+(and refunds from inside Zest), direct
 accounting-software and delivery-platform connectors, weighing-scale and
 label printers, a SQLite edition and native installers. The
 [roadmap](./ROADMAP.md) is explicit about what is done and what is not.
@@ -316,7 +316,7 @@ curl -fsSL https://orderrestro.nodedr.com/install-linux.sh | sudo bash
 ```
 
 Installs the `nodedr-orderrestro` .deb (runs in Docker; installs Docker if
-missing). OrderRestro opens on port 1995. Direct downloads and checksums are on
+missing). Zest opens on port 1995. Direct downloads and checksums are on
 the [releases page](https://github.com/Raktim94/nodedr-restaurant-pos/releases/latest).
 
 ### Installing Docker
@@ -525,13 +525,13 @@ See [`MAINTAINERS.md`](./MAINTAINERS.md) for project maintainers.
 ---
 
 <div align="center">
-<img src="apps/web/public/logo.png" alt="Nodedr OrderRestro" width="72">
+<img src="apps/web/public/logo-zest.svg" alt="Zest Restaurant POS" width="72">
 </div>
 
 
 ## Case study
 
-Read the [OrderRestro case study](https://www.raktimranjit.com/projects/orderrestro) for the product background and design decisions.
+Read the [Zest case study](https://www.raktimranjit.com/projects/orderrestro) for the product background and design decisions.
 
 Maintainer: [Raktim Ranjit](https://www.raktimranjit.com/)
 
@@ -545,4 +545,4 @@ offline-first POS, NestJS, Next.js, PostgreSQL, Prisma, CasaOS, ZimaOS.</sub>
 
 ## Commercial licence
 
-Licensed under the AGPL-3.0. A [commercial licence](COMMERCIAL-LICENSE.md) is available on request for use without the AGPL obligations. The NodeDR OrderRestro name and logo are not covered by the AGPL.
+Licensed under the AGPL-3.0. A [commercial licence](COMMERCIAL-LICENSE.md) is available on request for use without the AGPL obligations. The Zest Restaurant POS name and logo are not covered by the AGPL.

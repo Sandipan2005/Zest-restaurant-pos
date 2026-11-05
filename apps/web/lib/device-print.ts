@@ -1,4 +1,4 @@
-// Printing from the phone itself (OrderRestro Android app): a paired Bluetooth
+// Printing from the phone itself (Zest Android app): a paired Bluetooth
 // thermal printer, or Android's print dialog (Save as PDF and every installed
 // printer). In a normal browser everything here is off and the existing
 // browser / server-printer paths are used.
@@ -69,7 +69,7 @@ export function chooseBtPrinter(): Promise<BtPrinter | null> {
 /** Sends ESC/POS data (base64 from the server) to the chosen Bluetooth printer. */
 export async function printEscposOnDevice(chunks: string[]): Promise<void> {
   const np = nativePrinter();
-  if (!np) throw new Error("Bluetooth printing works in the OrderRestro app on a phone.");
+  if (!np) throw new Error("Bluetooth printing works in the Zest app on a phone.");
   let printer = savedBtPrinter();
   if (!printer) {
     printer = await chooseBtPrinter();

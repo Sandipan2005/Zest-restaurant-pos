@@ -1,6 +1,6 @@
 # Store listing text (Google Play and App Store)
 
-**App name:** OrderRestro
+**App name:** Zest
 **Subtitle / short description (80):** Orders, deliveries and your kitchen, connected to your own server.
 **Category:** Business (Play: Business; App Store: Business, secondary Food & Drink)
 **Contact email:** info@nodedr.com
@@ -12,7 +12,7 @@
 
 ## Full description
 
-OrderRestro is the staff and delivery rider app for restaurants that run NodeDR OrderRestro, the free, open-source restaurant system you host yourself. This app needs an OrderRestro server; ask your restaurant for its address or scan the QR code in Settings > Mobile app.
+Zest is the staff and delivery rider app for restaurants that run Zest Restaurant POS, the free, open-source restaurant system you host yourself. This app needs an Zest server; ask your restaurant for its address or scan the QR code in Settings > Mobile app.
 
 For riders
 - Sign in with your phone number and password
@@ -55,7 +55,7 @@ Free. No ads. No tracking. Delete your account any time from the user menu.
 - Readable status bar on Android 15 and 16
 
 ## First release (1.14.1)
-First release of the OrderRestro app for Android and iPhone.
+First release of the Zest app for Android and iPhone.
 
 ## Keywords (App Store, 100 chars)
 restaurant,pos,delivery,rider,kitchen,orders,waiter,cashier,dashboard,self-hosted

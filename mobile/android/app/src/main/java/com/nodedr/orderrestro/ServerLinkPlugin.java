@@ -9,7 +9,7 @@ import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
 
 /**
- * Remembers which restaurant server this phone talks to. OrderRestro is
+ * Remembers which restaurant server this phone talks to. Zest is
  * self-hosted, so the address is typed (or scanned) once and the app then opens
  * that server's own web app.
  *
@@ -81,7 +81,7 @@ public class ServerLinkPlugin extends Plugin {
         return l.isEmpty() ? external(ctx) : l;
     }
 
-    /** Does an OrderRestro server answer at this address within a moment? */
+    /** Does an Zest server answer at this address within a moment? */
     static boolean reachable(String base) {
         java.net.HttpURLConnection c = null;
         try {

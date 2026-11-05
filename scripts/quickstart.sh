@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Nodedr OrderRestro quickstart — macOS & Linux.
+# Zest Restaurant POS quickstart — macOS & Linux.
 #
 # Checks whether Docker is installed and running; installs it if not
 # (Docker Desktop via Homebrew on macOS, installing Homebrew first if needed, Docker Engine via the official
@@ -161,5 +161,5 @@ else
 fi
 
 cd "$REPO_DIR"
-echo "==> Installing and starting Nodedr OrderRestro..."
+echo "==> Installing and starting Zest Restaurant POS..."
 $SUDO ./install.sh <"$TTY_IN"

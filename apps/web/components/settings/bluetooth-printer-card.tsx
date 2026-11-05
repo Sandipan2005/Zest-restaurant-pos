@@ -20,7 +20,7 @@ const subscribe = (cb: () => void) => {
 const read = () => window.localStorage.getItem("orderrestro.btPrinter") ?? "";
 
 /**
- * Settings > Printer, on a phone running the OrderRestro app: choose the paired
+ * Settings > Printer, on a phone running the Zest app: choose the paired
  * Bluetooth printer this phone prints bills and kitchen tickets on. Hidden in a
  * browser, where the printer attached to the restaurant computer is used.
  */

@@ -1,6 +1,6 @@
 # Notes for App Review and Play review
 
-OrderRestro is open-source restaurant software that each restaurant hosts on its own computer. This app is the staff and rider client, so it needs a server address on first launch.
+Zest is open-source restaurant software that each restaurant hosts on its own computer. This app is the staff and rider client, so it needs a server address on first launch.
 
 **Demo server for reviewers:** https://orderrestro-demo.nodedr.com
 

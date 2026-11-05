@@ -1,5 +1,5 @@
 [Unit]
-Description=OrderRestro (Docker Compose)
+Description=Zest (Docker Compose)
 Documentation=https://orderrestro.nodedr.com/docs
 Requires=docker.service
 After=docker.service network-online.target

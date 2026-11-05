@@ -1,6 +1,6 @@
 # Integrations hub
 
-Settings → Integrations lets a restaurant connect OrderRestro to outside
+Settings → Integrations lets a restaurant connect Zest to outside
 platforms **using its own accounts and credentials**. Nothing routes through a
 central Nodedr server; the credentials belong to the restaurant and are stored
 on its own installation, encrypted.
@@ -20,13 +20,13 @@ on its own installation, encrypted.
 Zomato and Swiggy have no public order API: restaurants receive their orders
 through the platform's merchant webhook or an aggregator / channel manager
 (UrbanPiper, Petpooja, Dotpe and similar) that the restaurant has an account
-with. OrderRestro therefore exposes one signed endpoint per restaurant and
+with. Zest therefore exposes one signed endpoint per restaurant and
 provider (`zomato`, `swiggy`, `aggregator`); Settings -> Integrations shows the
 exact URL and a secret generator.
 
     POST /api/v1/integration-hub/webhook/<restaurantId>/<provider>
-    X-OrderRestro-Timestamp: <unix seconds>
-    X-OrderRestro-Signature: sha256=<hex HMAC-SHA256(secret, timestamp + "." + rawBody)>
+    X-Zest-Timestamp: <unix seconds>
+    X-Zest-Signature: sha256=<hex HMAC-SHA256(secret, timestamp + "." + rawBody)>
 
 Events (JSON body):
 

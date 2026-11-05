@@ -103,5 +103,5 @@ jobs:
           if gh release view "$TAG" >/dev/null 2>&1; then
             gh release upload "$TAG" dist/* packaging/deb/install-linux.sh --clobber
           else
-            gh release create "$TAG" dist/* packaging/deb/install-linux.sh --target "${{ github.sha }}" --title "OrderRestro $VERSION" --notes "Packages for Ubuntu and Debian (amd64 and arm64). They install a systemd service that runs the version-pinned Docker images. One command: curl -fsSL https://orderrestro.nodedr.com/install-linux.sh | sudo bash   Or: sudo apt install ./nodedr-orderrestro_${VERSION}_<arch>.deb  Guide: https://orderrestro.nodedr.com/docs"
+            gh release create "$TAG" dist/* packaging/deb/install-linux.sh --target "${{ github.sha }}" --title "Zest $VERSION" --notes "Packages for Ubuntu and Debian (amd64 and arm64). They install a systemd service that runs the version-pinned Docker images. One command: curl -fsSL https://orderrestro.nodedr.com/install-linux.sh | sudo bash   Or: sudo apt install ./nodedr-orderrestro_${VERSION}_<arch>.deb  Guide: https://orderrestro.nodedr.com/docs"
           fi
