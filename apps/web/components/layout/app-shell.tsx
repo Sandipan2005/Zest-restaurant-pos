@@ -65,7 +65,7 @@ export function AppShell({
   return (
     <div className="flex min-h-screen bg-background">
       {/* Desktop sidebar */}
-      <aside className="hidden w-64 shrink-0 flex-col border-r border-sidebar-border bg-sidebar lg:flex">
+       <aside className="hidden w-64 shrink-0 flex-col border-r border-sidebar-border bg-sidebar shadow-[1px_0_0_0_var(--sidebar-border)] lg:flex">
         <div className="flex h-16 items-center gap-2 px-5">
           <RestaurantBrand />
         </div>
@@ -96,7 +96,7 @@ export function AppShell({
       </Sheet>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="flex h-16 shrink-0 items-center justify-between border-b border-border bg-background/80 px-4 backdrop-blur sm:px-6">
+        <header className="flex h-16 shrink-0 items-center justify-between border-b border-border bg-background/80 px-4 backdrop-blur-md shadow-sm sm:px-6">
           <button
             type="button"
             onClick={() => setMobileOpen(true)}

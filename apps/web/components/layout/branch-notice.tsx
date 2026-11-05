@@ -13,7 +13,8 @@ export function BranchNotice() {
   }
   if (state === "empty") {
     return (
-      <p role="alert" className="rounded-lg bg-warning/10 px-3 py-2 text-sm text-warning">
+      <p role="alert" className="flex items-center gap-2 rounded-xl border border-warning/30 bg-warning/10 px-4 py-3 text-sm text-warning">
+        <span className="size-2 shrink-0 rounded-full bg-warning" />
         No branch is assigned to your account. Ask an administrator to assign you to one.
       </p>
     );

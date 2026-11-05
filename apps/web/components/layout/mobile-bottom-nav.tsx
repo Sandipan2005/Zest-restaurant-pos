@@ -36,7 +36,7 @@ export function MobileBottomNav({
     .slice(0, PRIMARY_COUNT);
 
   const itemClass =
-    "relative flex flex-1 flex-col items-center justify-center gap-0.5 text-[11px] font-medium transition-colors";
+    "relative flex flex-1 flex-col items-center justify-center gap-0.5 text-[11px] font-medium transition-[color,transform] duration-150 ease-out active:scale-95";
 
   return (
     <nav

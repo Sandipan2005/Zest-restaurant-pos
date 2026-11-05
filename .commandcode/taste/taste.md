@@ -1,0 +1,1 @@
+- Prefers frontend UI to look professionally crafted (not AI-generated) with smooth, consistent design, while preserving the existing color theme. Confidence: 0.85
