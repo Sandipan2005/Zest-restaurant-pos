@@ -34,7 +34,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>OrderRestro.Launcher</RootNamespace>
-    <AssemblyName>OrderRestro</AssemblyName>
+    <AssemblyName>Zest</AssemblyName>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>..\Assets\app.ico</ApplicationIcon>
 
